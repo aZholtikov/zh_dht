@@ -42,13 +42,13 @@ esp_err_t zh_dht_read(zh_dht_handle_t *dht_handle, float *humidity, float *tempe
 		return ESP_ERR_INVALID_RESPONSE;
 	}
 	gpio_set_direction(dht_handle->sensor_pin, GPIO_MODE_OUTPUT);
+	gpio_set_level(dht_handle->sensor_pin, 0);
+	vTaskDelay(10 / portTICK_PERIOD_MS);
 #ifdef CONFIG_IDF_TARGET_ESP8266
 	taskENTER_CRITICAL();
 #else
 	taskENTER_CRITICAL(&s_spinlock);
 #endif
-	gpio_set_level(dht_handle->sensor_pin, 0);
-	esp_delay_us(3000);
 	gpio_set_level(dht_handle->sensor_pin, 1);
 	gpio_set_direction(dht_handle->sensor_pin, GPIO_MODE_INPUT);
 	uint8_t time = 0;
