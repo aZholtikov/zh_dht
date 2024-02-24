@@ -1,10 +1,10 @@
 #include "zh_dht.h"
 
-#define ZH_DHT_1_BIT_TRANSFER_MAX_DURATION 75
-#define ZH_DHT_0_BIT_TRANSFER_MAX_DURATION 30
-#define ZH_DHT_DATA_BIT_START_TRANSFER_MAX_DURATION 55
-#define ZH_DHT_RESPONSE_MAX_DURATION 85
-#define ZH_MASTER_RELEASE_MAX_DURATION 200
+#define ZH_DHT_1_BIT_TRANSFER_MAX_DURATION 75		   // Signal "1" high time.
+#define ZH_DHT_0_BIT_TRANSFER_MAX_DURATION 30		   // Signal "0" high time.
+#define ZH_DHT_DATA_BIT_START_TRANSFER_MAX_DURATION 55 // Signal "0", "1" low time.
+#define ZH_DHT_RESPONSE_MAX_DURATION 85				   // Response to low time. Response to high time.
+#define ZH_MASTER_RELEASE_MAX_DURATION 200			   // Bus master has released time.
 #define ZH_DHT_DATA_SIZE 40
 
 #ifdef CONFIG_IDF_TARGET_ESP8266
