@@ -56,6 +56,11 @@ esp_err_t zh_dht_read(zh_dht_handle_t *dht_handle, float *humidity, float *tempe
 	{
 		if (time > ZH_MASTER_RELEASE_MAX_DURATION)
 		{
+#ifdef CONFIG_IDF_TARGET_ESP8266
+			taskENTER_CRITICAL();
+#else
+			taskENTER_CRITICAL(&s_spinlock);
+#endif
 			return ESP_ERR_TIMEOUT;
 		}
 		++time;
@@ -66,6 +71,11 @@ esp_err_t zh_dht_read(zh_dht_handle_t *dht_handle, float *humidity, float *tempe
 	{
 		if (time > ZH_DHT_RESPONSE_MAX_DURATION)
 		{
+#ifdef CONFIG_IDF_TARGET_ESP8266
+			taskEXIT_CRITICAL();
+#else
+			taskEXIT_CRITICAL(&s_spinlock);
+#endif
 			return ESP_ERR_TIMEOUT;
 		}
 		++time;
@@ -76,6 +86,11 @@ esp_err_t zh_dht_read(zh_dht_handle_t *dht_handle, float *humidity, float *tempe
 	{
 		if (time > ZH_DHT_RESPONSE_MAX_DURATION)
 		{
+#ifdef CONFIG_IDF_TARGET_ESP8266
+			taskEXIT_CRITICAL();
+#else
+			taskEXIT_CRITICAL(&s_spinlock);
+#endif
 			return ESP_ERR_TIMEOUT;
 		}
 		++time;
