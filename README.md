@@ -31,6 +31,7 @@ Reading the sensor:
 
 void app_main(void)
 {
+	esp_log_level_set("zh_dht", ESP_LOG_NONE);
 	zh_dht_handle_t dht_handle = zh_dht_init(ZH_DHT22, GPIO_NUM_5);
 	float humidity;
 	float temperature;
