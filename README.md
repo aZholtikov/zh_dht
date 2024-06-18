@@ -5,8 +5,6 @@
 1. ESP8266 RTOS_SDK v3.4
 2. ESP32 ESP-IDF v5.2
 
-## [Function description](http://zh-dht.zh.com.ru)
-
 ## Using
 
 In an existing project, run the following command to install the component:
@@ -33,8 +31,8 @@ void app_main(void)
 {
 	esp_log_level_set("zh_dht", ESP_LOG_NONE);
 	zh_dht_handle_t dht_handle = zh_dht_init(ZH_DHT22, GPIO_NUM_5);
-	float humidity;
-	float temperature;
+	float humidity = 0.0;
+	float temperature = 0.0;
 	for (;;)
 	{
 		zh_dht_read(&dht_handle, &humidity, &temperature);

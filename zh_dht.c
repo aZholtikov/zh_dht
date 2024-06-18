@@ -1,12 +1,5 @@
-/**
- * @file
- * The main code of the zh_dht component.
- *
- */
-
 #include "zh_dht.h"
 
-/// \cond
 #define BIT_1_TRANSFER_MAX_DURATION 75			// Signal "1" high time.
 #define BIT_0_TRANSFER_MAX_DURATION 30			// Signal "0" high time.
 #define DATA_BIT_START_TRANSFER_MAX_DURATION 55 // Signal "0", "1" low time.
@@ -19,7 +12,6 @@
 #else
 #define esp_delay_us(x) esp_rom_delay_us(x)
 #endif
-/// \endcond
 
 static const char *TAG = "zh_dht";
 

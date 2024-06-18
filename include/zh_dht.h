@@ -1,9 +1,3 @@
-/**
- * @file
- * Header file for the zh_dht component.
- *
- */
-
 #pragma once
 
 #include "stdint.h"
@@ -18,24 +12,17 @@
 extern "C"
 {
 #endif
-	/**
-	 * @brief Enumeration of supported sensor types.
-	 *
-	 */
-	typedef enum
+
+	typedef enum // Enumeration of supported sensor types.
 	{
-		ZH_DHT11, ///< Sensor type DHT11.
-		ZH_DHT22  ///< Sensor type DHT22 or AM2302.
+		ZH_DHT11, // Sensor type DHT11.
+		ZH_DHT22  // Sensor type DHT22 or AM2302.
 	} zh_dht_sensor_type_t;
 
-	/**
-	 * @brief Unique handle of the sensor.
-	 *
-	 */
-	typedef struct
+	typedef struct // Unique handle of the sensor.
 	{
-		uint8_t sensor_pin;				  ///< Sensor GPIO connection. @note
-		zh_dht_sensor_type_t sensor_type; ///< Sensor type. @note
+		uint8_t sensor_pin;				  // Sensor GPIO connection.
+		zh_dht_sensor_type_t sensor_type; // Sensor type.
 	} zh_dht_handle_t;
 
 	/**
